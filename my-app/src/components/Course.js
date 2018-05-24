@@ -5,8 +5,14 @@ class Course extends Component {
   constructor(props){
     super(props);
   
+    this.state = {
+      isShowToogleOutline: false,
+      totalStudent: 60
+    };
+
     this.handleClick3 = this.handleClick3.bind(this);
     this.registerCourse = this.registerCourse.bind(this);
+    this.handleClickToogleOutline = this.handleClickToogleOutline.bind(this);
   }
 
   handleClick1(){
@@ -46,7 +52,22 @@ class Course extends Component {
               );
     }
   }
+
+  handleClickToogleOutline() {
+    this.setState({
+      isShowToogleOutline: !this.state.isShowToogleOutline
+    });
+  }
+
   render() {
+    let elementOutline = null;
+    if(this.state.isShowToogleOutline){
+      elementOutline  = <ul className="list-group">
+                          <Lesson />
+                          <Lesson />
+                          <Lesson />
+                        </ul>;
+    }
     return (
         <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
           <div className="panel panel-info">
@@ -56,11 +77,8 @@ class Course extends Component {
               <div className="panel-body">
                 <p> {this.props.time}</p>
                 <p>{this.props.children}</p>
-                <ul className="list-group">
-                  <Lesson />
-                  <Lesson />
-                  <Lesson />
-                </ul>
+                <p> <button onClick={this.handleClickToogleOutline} type="button" className="btn btn-success">Toogle Outline</button></p>
+                {elementOutline}
               </div>
               <div className="panel-footer">
                 {this.showButtonFree()}

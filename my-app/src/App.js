@@ -8,12 +8,12 @@ class App extends Component {
     const items = [
       { name: 'React JS',
         time: '20h',
-        free: true, 
+        free: false, 
         desc: 'Reat Js very simple'
       },
       { name: 'Angular JS',
         time: '50h',
-        free: false, 
+        free: true, 
       },
       { name: 'Node JS',
         time: '30h',
