@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Course from './components/Course';
+import LifeCycle from './components/LifeCycle';
 
 class App extends Component {
   render() {
@@ -21,12 +22,16 @@ class App extends Component {
       },
     ];
 
-    const elmCourses = items.map((item, index) =>
+    let elmCourses = items.map((item, index) =>
         <Course key={index} name={item.name} time={item.time} free={item.free}>{item.desc}</Course>
   );
+  
+  elmCourses= null;
+
     return (
       <div className="row">
         {elmCourses}
+        <LifeCycle />
     </div>
     );
   }
