@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import Course from './components/Course';
 
 class App extends Component {
   render() {
+    const items = [
+      { name: 'React JS',
+        time: '20h',
+        free: true, 
+        desc: 'Reat Js very simple'
+      },
+      { name: 'Angular JS',
+        time: '50h',
+        free: false, 
+      },
+      { name: 'Node JS',
+        time: '30h',
+        free: true, 
+      },
+    ];
+
+    const elmCourses = items.map((item, index) =>
+        <Course key={index} name={item.name} time={item.time} free={item.free}>{item.desc}</Course>
+  );
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to ReactJS</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <div className="row">
+        {elmCourses}
+    </div>
     );
   }
 }
